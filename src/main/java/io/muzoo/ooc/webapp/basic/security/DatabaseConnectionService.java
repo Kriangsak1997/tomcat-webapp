@@ -29,6 +29,7 @@ public class DatabaseConnectionService {
 
 //    public static void main(String[] args) {
 //        try {
+    
 //            Connection connection = ds.getConnection();
 //            String sql = "INSERT INTO tbl_user (username, password, display_name ) VALUES (?, ?, ?);";
 //            PreparedStatement ps =  connection.prepareStatement(sql);
