@@ -29,7 +29,5 @@ public class TestDatabaseConnection {
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
     }
 }
