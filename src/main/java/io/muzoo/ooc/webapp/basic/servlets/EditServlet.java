@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class EditServlet extends AbstractRoutableHttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (securityService.isAuthorized(request)) {
@@ -18,7 +19,7 @@ public class EditServlet extends AbstractRoutableHttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/edit.jsp");
             requestDispatcher.include(request, response);
         } else {
-            response.sendRedirect("/");
+            response.sendRedirect("/user");
         }
     }
 
