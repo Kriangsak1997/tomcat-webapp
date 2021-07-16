@@ -4,8 +4,8 @@
 <body>
 
 <ul>
-    <li><a class="active" href="/">Home</a></li>
-    <li><a href="/">Back</a></li>
+    <li><a class="active" href="/user">USER</a></li>
+    <li><a href="/user">Back</a></li>
     <li><a href="/logout">Logout</a></li>
 </ul>
 

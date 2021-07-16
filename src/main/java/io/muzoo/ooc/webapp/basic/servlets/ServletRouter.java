@@ -3,7 +3,6 @@ package io.muzoo.ooc.webapp.basic.servlets;
 import io.muzoo.ooc.webapp.basic.security.SecurityService;
 import io.muzoo.ooc.webapp.basic.security.UserService;
 import io.muzoo.ooc.webapp.basic.servlets.AbstractRoutableHttpServlet;
-import io.muzoo.ooc.webapp.basic.servlets.HomeServlet;
 import io.muzoo.ooc.webapp.basic.servlets.LoginServlet;
 import io.muzoo.ooc.webapp.basic.servlets.LogoutServlet;
 import org.apache.catalina.Context;
@@ -17,8 +16,6 @@ public class ServletRouter {
     private final List<Class<? extends AbstractRoutableHttpServlet>> servletClasses = new ArrayList<>();
 
     {
-        servletClasses.add(HomeServlet.class);
-        servletClasses.add(LoginServlet.class);
         servletClasses.add(LogoutServlet.class);
         servletClasses.add(UserServlet.class);
         servletClasses.add(AddUserServlet.class);
