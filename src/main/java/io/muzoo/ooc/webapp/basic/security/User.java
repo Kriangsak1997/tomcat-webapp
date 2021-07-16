@@ -5,7 +5,7 @@ public class User {
     private long id;
     private String username;
     private String password;
-    private String Display_name;
+    private String display_name;
 
     public long getId() {
         return id;
@@ -32,11 +32,11 @@ public class User {
     }
 
     public String getDisplay_name() {
-        return Display_name;
+        return display_name;
     }
 
     public void setDisplay_name(String display_name) {
-        Display_name = display_name;
+        this.display_name = display_name;
     }
 
 
@@ -44,14 +44,10 @@ public class User {
         this.id = id;
         this.username = username;
         this.password = password;
-        Display_name = display_name;
+        this.display_name = display_name;
     }
 
-    public User() {
+    public User(String string, String resultSetString) {
     }
 
-    public User(String username, String password) {
-        this.username = username;
-        this.password = password;
-    }
 }

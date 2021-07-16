@@ -30,10 +30,6 @@ public class UserService {
         }
         return null;
     }
-//    public User findByUsername(String username) {
-//        return users.get(username);
-//    }
-
     public boolean checkIfUserExists(String username) {
         return getUser(username) != null;
     }

@@ -65,7 +65,7 @@ public class DatabaseConnectionService {
 //            Class.forName(jdbcDriverStr);
                 connection = DriverManager.getConnection(jdbcURL);
                 // the mysql insert statement
-                String query = " insert into users (username, password, display_name)"
+                String query = " insert into tbl_user (username, password, display_name)"
                         + " values (?, ?, ?)";
                 // create the mysql insert preparedstatement
                 preparedStatement = connection.prepareStatement(query);
@@ -87,7 +87,7 @@ public class DatabaseConnectionService {
         public void delete(String username) {
             try {
                 connection = DriverManager.getConnection(jdbcURL);
-                String query = " delete from users where username = ?";
+                String query = " delete from tbl_user where username = ?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, username);
                 preparedStatement.execute();
@@ -100,7 +100,7 @@ public class DatabaseConnectionService {
             try {
                 connection = DriverManager.getConnection(jdbcURL);
 
-                String query = " update users set password = ? where username = ?";
+                String query = " update tbl_user set password = ? where username = ?";
                 preparedStatement = connection.prepareStatement(query);
                 String hashpw = BCrypt.hashpw(password, BCrypt.gensalt());
                 preparedStatement.setString(1, hashpw);
@@ -108,7 +108,7 @@ public class DatabaseConnectionService {
                 preparedStatement.setString(2, username);
                 preparedStatement.executeUpdate();
 
-                query = " update users set email = ? where username = ?";
+                query = " update tbl_user set display_name = ? where username = ?";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, display_name);
                 preparedStatement.setString(2, username);

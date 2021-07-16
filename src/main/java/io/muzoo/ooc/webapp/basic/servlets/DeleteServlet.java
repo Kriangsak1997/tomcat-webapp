@@ -17,7 +17,7 @@ public class DeleteServlet extends AbstractRoutableHttpServlet {
             String toDelete = request.getParameter("username");
             if (username.equals(toDelete)) {
                 request.setAttribute("currentUser", userService.getUser(username));
-                String error = "Unable to remove one's own account";
+                String error = "Unable to remove your own account";
                 request.setAttribute("error", error);
                 List<User> users =  userService.getUsers();
                 request.setAttribute("users", users);
@@ -26,7 +26,7 @@ public class DeleteServlet extends AbstractRoutableHttpServlet {
                 return;
             }
             userService.removeUser(toDelete);
-            response.sendRedirect("/");
+            response.sendRedirect("/user");
         } else {
             response.sendRedirect("/login");
         }
