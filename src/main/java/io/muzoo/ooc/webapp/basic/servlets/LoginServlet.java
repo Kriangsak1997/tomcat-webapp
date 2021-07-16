@@ -27,7 +27,6 @@ public class LoginServlet extends AbstractRoutableHttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/login.jsp");
             requestDispatcher.include(request, response);
         }
-
     }
 
     @Override

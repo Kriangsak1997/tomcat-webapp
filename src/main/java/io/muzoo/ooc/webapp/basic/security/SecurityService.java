@@ -1,11 +1,17 @@
 package io.muzoo.ooc.webapp.basic.security;
 
+import org.mindrot.jbcrypt.BCrypt;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.Objects;
 
 public class SecurityService {
+    private DatabaseConnectionService databaseConnectionService;
 
+    public UserService getUserService() {
+        return userService;
+    }
     private UserService userService;
 
     public void setUserService(UserService userService) {
@@ -32,8 +38,8 @@ public class SecurityService {
     public boolean login(HttpServletRequest request) {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-        User user = userService.findByUsername(username);
-        if (user != null && Objects.equals(user.getPassword(), password)) {
+        User user = userService.getUser(username);
+        if (user != null && BCrypt.checkpw(password, userService.getUser(username).getPassword())) {
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
             return true;
