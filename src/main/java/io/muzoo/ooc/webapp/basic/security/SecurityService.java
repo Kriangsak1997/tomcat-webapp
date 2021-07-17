@@ -4,10 +4,9 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Objects;
 
 public class SecurityService {
-    private DatabaseConnectionService databaseConnectionService;
+    private io.muzoo.ooc.webapp.basic.security.databaseConnectionService databaseConnectionService;
 
     public UserService getUserService() {
         return userService;

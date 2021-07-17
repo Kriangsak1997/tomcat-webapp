@@ -1,10 +1,8 @@
 package io.muzoo.ooc.webapp.basic.security;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class UserService {
-    private DatabaseConnectionService databaseConnectionService;
+    private io.muzoo.ooc.webapp.basic.security.databaseConnectionService databaseConnectionService;
 
     public void addUser(String username, String password, String display_name) {
         databaseConnectionService.insert(username, password, display_name);
