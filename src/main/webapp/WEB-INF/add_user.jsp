@@ -11,7 +11,7 @@
 
 <p>${error}</p>
 <h1>
-    This is Add User page.
+    Add User page.
 </h1>
 <>
 <h2>

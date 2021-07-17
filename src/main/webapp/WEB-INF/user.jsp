@@ -106,24 +106,21 @@
 
     <tr>
         <th>username</th>
-        <th>first name</th>
-        <th>last name</th>
-        <th>email</th>
+        <th>display_name</th>
         <th>action</th>
     </tr>
     <c:forEach items="${users}" var="u">
         <tr>
             <td>${u.getUsername()}</td>
             <td>${u.getFirstName()}</td>
-            <td>${u.getLastName()}</td>
-            <td>${u.getEmail()}</td>
+            <td>${u.getDisplay_name()}</td>
             <td>
                 <div>
                     <form action="/edit" method="get">
                         <button type="submit" name="username" value="${u.getUsername()}">edit</button>
                     </form>
                     <form id="delete-form" action="/delete" method="get">
-                        <button type="submit" onclick="return confirm('Are you sure you want to delete this user?');" name="username" value="${u.getUsername()}">delete</button>
+                        <button type="submit" onclick="return confirm('Confirm to delete this user?');" name="username" value="${u.getUsername()}">delete</button>
                     </form>
                 </div>
             </td>
@@ -133,13 +130,10 @@
     <h2 style="text-align:center">current user profile</h2>
     <div class="card">
         <p>Username: ${currentUser.getUsername()}</p>
-        <p>Full Name: ${currentUser.getFirstName()} ${currentUser.getLastName()}</p>
-        <p>email: ${currentUser.getEmail()}</p>
+        <p>Display_name: ${currentUser.getDisplay_name()}</p>
     </div>
 
 </table>
-
-
 
 </body>
 </html>
