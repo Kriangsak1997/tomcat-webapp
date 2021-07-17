@@ -1,34 +1,37 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.security.User;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
+import java.util.List;
 
-public class HomeServlet extends AbstractRoutableHttpServlet {
-
+public class UserServlet extends AbstractRoutableHttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // Model - View - Controller
         if (securityService.isAuthorized(request)) {
-            Date date = new Date();
             String username = securityService.getCurrentUsername(request);
-            request.setAttribute("date", date);
-            request.setAttribute("username", username);
+            request.setAttribute("currentUser", userService.getUser(username));
+            // List of users
+            List<User> users = securityService.getUserService().getUsers();
+            request.setAttribute("users", users);
 
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/home.jsp");
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/user.jsp");
             requestDispatcher.include(request, response);
         } else {
             response.sendRedirect("/login");
         }
+    }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     }
 
     @Override
     public String getPattern() {
-        return "/index.jsp";
+        return "/user";
     }
 }
