@@ -16,6 +16,13 @@ public class DatabaseConnectionService {
     private PreparedStatement preparedStatement;
 
     public DatabaseConnectionService() {
+<<<<<<< HEAD
+        ds = new HikariDataSource();
+        ds.setMaximumPoolSize(20);
+        ConfigProperties configProperties = ConfigurationLoader.load();
+        if(configProperties==null){
+            throw new RuntimeException("Unable to read the config.properties");
+=======
         try {
             connection = DriverManager.getConnection(jdbcURL);
             statement = connection.createStatement();
@@ -31,8 +38,12 @@ public class DatabaseConnectionService {
             throwables.printStackTrace();
         } finally {
             close();
+>>>>>>> 3194f1f7a6c02992c50d812f8e1fbcc85a491f6a
         }
     }
+<<<<<<< HEAD
+}
+=======
 
         public User getUser(String username) {
             for (User user : getUsers()) {
@@ -136,3 +147,4 @@ public class DatabaseConnectionService {
             }
         }
     }
+>>>>>>> 3194f1f7a6c02992c50d812f8e1fbcc85a491f6a
