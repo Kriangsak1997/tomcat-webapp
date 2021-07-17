@@ -1,6 +1,6 @@
 package io.muzoo.ooc.webapp.basic.security;
 
-public class User {
+public class  User {
 
     private String username;
 
