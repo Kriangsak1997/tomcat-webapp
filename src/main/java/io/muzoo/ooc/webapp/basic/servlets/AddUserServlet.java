@@ -1,5 +1,7 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.AbstractRoutableHttpServlet;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -15,27 +17,7 @@ public class AddUserServlet extends AbstractRoutableHttpServlet {
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add_user.jsp");
         requestDispatcher.include(request, response);
     }
-/*
- protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (securityService.isAuthorized(request)) {
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-            String email = request.getParameter("email");
-            String firstName = request.getParameter("firstName");
-            String lastName = request.getParameter("lastName");
-            if (!userService.checkIfUserExists(username)) {
-                userService.addUser(username, password, email, firstName, lastName);
-                response.sendRedirect("/");
-            } else {
-                String error = "username already existed";
-                request.setAttribute("error", error);
-                RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add_user.jsp");
-                requestDispatcher.include(request, response);
-            }
-        } else {
-            response.sendRedirect("/user");
-        }
- */
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (securityService.isAuthorized(request)) {
@@ -43,11 +25,11 @@ public class AddUserServlet extends AbstractRoutableHttpServlet {
             String password = request.getParameter("password");
             String display_name = request.getParameter("display_name");
             if (!userService.checkIfUserExists(username)) {
-                userService.addUser(username, password, display_name);
-                response.sendRedirect("/user");
+                userService.addUser(username, password,display_name );
+                response.sendRedirect("/");
             } else {
-                String e = "Username already existed";
-                request.setAttribute("error", e);
+                String error = "username already existed";
+                request.setAttribute("error", error);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/add_user.jsp");
                 requestDispatcher.include(request, response);
             }
@@ -60,5 +42,4 @@ public class AddUserServlet extends AbstractRoutableHttpServlet {
     public String getPattern() {
         return "/add_user";
     }
-
 }

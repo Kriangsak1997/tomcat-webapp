@@ -4,17 +4,19 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.Objects;
 
 public class SecurityService {
-    private io.muzoo.ooc.webapp.basic.security.databaseConnectionService databaseConnectionService;
 
-    public UserService getUserService() {
-        return userService;
-    }
+    private MySql mySql;
     private UserService userService;
 
     public void setUserService(UserService userService) {
         this.userService = userService;
+    }
+
+    public UserService getUserService() {
+        return userService;
     }
 
     public String getCurrentUsername(HttpServletRequest request) {
@@ -45,6 +47,5 @@ public class SecurityService {
         } else {
             return false;
         }
-
     }
 }

@@ -1,23 +1,25 @@
 package io.muzoo.ooc.webapp.basic.security;
+
 import java.util.List;
 
 public class UserService {
-    private io.muzoo.ooc.webapp.basic.security.databaseConnectionService databaseConnectionService;
+
+    private MySql mySql = new MySql();
 
     public void addUser(String username, String password, String display_name) {
-        databaseConnectionService.insert(username, password, display_name);
+        mySql.insert(username, password, display_name);
     }
 
     public void removeUser(String username) {
-        databaseConnectionService.delete(username);
+        mySql.delete(username);
     }
 
     public void editUser(String username, String password, String display_name) {
-        databaseConnectionService.update(username, password, display_name);
+        mySql.update(username, password, display_name);
     }
 
     public List<User> getUsers() {
-        return databaseConnectionService.getUsers();
+        return mySql.getUsers();
     }
 
     public User getUser(String username) {
@@ -28,9 +30,8 @@ public class UserService {
         }
         return null;
     }
+
     public boolean checkIfUserExists(String username) {
         return getUser(username) != null;
     }
-
-
 }

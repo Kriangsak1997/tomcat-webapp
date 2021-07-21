@@ -1,17 +1,36 @@
 package io.muzoo.ooc.webapp.basic.security;
 
-public class  User {
+public class User {
 
-    private long id;
+    private Long id;
+
     private String username;
+
     private String password;
     private String display_name;
 
-    public long getId() {
+
+    public User() {
+    }
+    public User( String username, String password, String display_name) {
+        this.username = username;
+        this.password = password;
+        this.display_name = display_name;
+    }
+
+    public String getDisplay_name() {
+        return display_name;
+    }
+
+    public void setDisplay_name(String display_name) {
+        this.display_name = display_name;
+    }
+
+    public Long getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -29,25 +48,6 @@ public class  User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getDisplay_name() {
-        return display_name;
-    }
-
-    public void setDisplay_name(String display_name) {
-        this.display_name = display_name;
-    }
-
-
-    public User(long id, String username, String password, String display_name) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.display_name = display_name;
-    }
-
-    public User(String string, String resultSetString) {
     }
 
 }

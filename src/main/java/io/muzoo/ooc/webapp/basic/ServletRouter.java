@@ -1,8 +1,9 @@
-package io.muzoo.ooc.webapp.basic.servlets;
+package io.muzoo.ooc.webapp.basic;
 
-import io.muzoo.ooc.webapp.basic.security.databaseConnectionService;
+import io.muzoo.ooc.webapp.basic.security.MySql;
 import io.muzoo.ooc.webapp.basic.security.SecurityService;
 import io.muzoo.ooc.webapp.basic.security.UserService;
+import io.muzoo.ooc.webapp.basic.servlets.*;
 import org.apache.catalina.Context;
 import org.apache.catalina.startup.Tomcat;
 
@@ -15,7 +16,9 @@ public class ServletRouter {
 
     {
         servletClasses.add(HomeServlet.class);
+        servletClasses.add(LoginServlet.class);
         servletClasses.add(LogoutServlet.class);
+
         servletClasses.add(UserServlet.class);
         servletClasses.add(AddUserServlet.class);
         servletClasses.add(DeleteServlet.class);
@@ -25,16 +28,16 @@ public class ServletRouter {
     public void init(Context ctx) {
         UserService userService = new UserService();
         SecurityService securityService = new SecurityService();
-        databaseConnectionService databaseConnectionService = new databaseConnectionService();
+        MySql mySql = new MySql();
         securityService.setUserService(userService);
 
         for (Class<? extends AbstractRoutableHttpServlet> servletClass: servletClasses) {
             try {
                 AbstractRoutableHttpServlet httpServlet = servletClass.newInstance();
                 httpServlet.setSecurityService(securityService);
+                //
                 httpServlet.setUserService(userService);
                 Tomcat.addServlet(ctx, servletClass.getSimpleName(), httpServlet);
-
                 ctx.addServletMapping(httpServlet.getPattern(), servletClass.getSimpleName());
             } catch (InstantiationException e) {
                 e.printStackTrace();

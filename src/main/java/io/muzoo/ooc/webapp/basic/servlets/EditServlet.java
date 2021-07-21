@@ -1,5 +1,6 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.AbstractRoutableHttpServlet;
 import io.muzoo.ooc.webapp.basic.security.User;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +20,7 @@ public class EditServlet extends AbstractRoutableHttpServlet {
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("WEB-INF/edit.jsp");
             requestDispatcher.include(request, response);
         } else {
-            response.sendRedirect("/user");
+            response.sendRedirect("/");
         }
     }
 

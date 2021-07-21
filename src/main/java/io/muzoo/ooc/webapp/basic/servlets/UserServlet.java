@@ -1,5 +1,6 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.AbstractRoutableHttpServlet;
 import io.muzoo.ooc.webapp.basic.security.User;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class UserServlet extends AbstractRoutableHttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (securityService.isAuthorized(request)) {

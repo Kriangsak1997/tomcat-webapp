@@ -1,9 +1,10 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.AbstractRoutableHttpServlet;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 public class LogoutServlet extends AbstractRoutableHttpServlet {
@@ -11,7 +12,7 @@ public class LogoutServlet extends AbstractRoutableHttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         securityService.logout(request);
-        response.sendRedirect("/login");
+        response.sendRedirect("/");
     }
 
     @Override

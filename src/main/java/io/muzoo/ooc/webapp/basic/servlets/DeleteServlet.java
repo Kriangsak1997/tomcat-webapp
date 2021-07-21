@@ -1,5 +1,6 @@
 package io.muzoo.ooc.webapp.basic.servlets;
 
+import io.muzoo.ooc.webapp.basic.AbstractRoutableHttpServlet;
 import io.muzoo.ooc.webapp.basic.security.User;
 
 import javax.servlet.RequestDispatcher;
@@ -10,6 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 public class DeleteServlet extends AbstractRoutableHttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (securityService.isAuthorized(request)) {
@@ -17,7 +19,7 @@ public class DeleteServlet extends AbstractRoutableHttpServlet {
             String toDelete = request.getParameter("username");
             if (username.equals(toDelete)) {
                 request.setAttribute("currentUser", userService.getUser(username));
-                String error = "Unable to remove your own account";
+                String error = "Cannot remove your own account";
                 request.setAttribute("error", error);
                 List<User> users =  userService.getUsers();
                 request.setAttribute("users", users);
@@ -26,7 +28,7 @@ public class DeleteServlet extends AbstractRoutableHttpServlet {
                 return;
             }
             userService.removeUser(toDelete);
-            response.sendRedirect("/user");
+            response.sendRedirect("/");
         } else {
             response.sendRedirect("/login");
         }
